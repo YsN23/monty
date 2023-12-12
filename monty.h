@@ -46,6 +46,7 @@ typedef struct instruction_s
 
 /*PUSH OPERATION*/
 stack_t *push_op(stack_t **top, int data);
+void pall_op(stack_t *top, int data);
 
 
 #endif
