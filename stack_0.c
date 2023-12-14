@@ -1,29 +1,29 @@
 #include "monty.h"
 
-
 /**
- * push_op - push operation (pushing element in the top of stack)
- * @top: doule Pointer to the head
- * @data: int data
- * Return: New Element, or NULL
-*/
-
-stack_t *push_op(stack_t **top, int data)
+ * push_f - pushes an element to the stack
+ * @new_node: Pointer to the new node.
+ * @l_num: line number of of the opcode.
+ */
+void push_f(stack_t **new_node, unsigned int l_num)
 {
-	stack_t *new_elem = malloc(sizeof(stack_t));
+	stack_t *tmp;
 
-	if (new_elem == NULL)
+	(void)l_num;
+	if (!(new_node) || !(*new_node))
 	{
-		return (NULL);
+		free(buffer);
+		buffer = NULL;
+		fclose(f_d);
+		exit(EXIT_FAILURE);
 	}
-
-	new_elem->n = data;
-	new_elem->prev = NULL;
-
-	(*top)->prev = new_elem;
-
-	*top = new_elem;
-
-	return (new_elem);
-
+	if (first == NULL)
+	{
+		first = *new_node;
+		return;
+	}
+	tmp = first;
+	first = *new_node;
+	first->next = tmp;
+	tmp->prev = first;
 }
