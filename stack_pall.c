@@ -1,33 +1,28 @@
 #include "monty.h"
 
 /**
-* pall_op - pall operation
-* @top: A double Pointer To The Top Element in the stack
-* @data: int data to be print
-*/
-
-#include "monty.h"
-
-void pall_op(stack_t **top, int data)
+ * pall_f - prints all the values on the stack
+ * @new_node: double pointer to the node
+ * @l_num: line number of of the opcode.
+ */
+void pall_f(stack_t **new_node, unsigned int l_num)
 {
-	if (!check_empty(top))
+
+	stack_t *ptr_tmp;
+
+	(void)l_num;
+	if (new_node == NULL)
 	{
-		while (*top)
-		{
-			data = (*top)->n;
-			printf("%d\n", data);
-			*top = (*top)->next;
-		}
+		free(buffer);
+		buffer = NULL;
+		fclose(f_d);
+		exit(EXIT_FAILURE);
 	}
-}
 
-/**
- * check_empty - checks if the stack is empty
- * @top: Pointer to the top
- * Return: in Success, Not top
-*/
-
-int check_empty(stack_t **top)
-{
-	return (!(*top));
+	ptr_tmp = *new_node;
+	for (; ptr_tmp;)
+	{
+		printf("%d\n", ptr_tmp->n);
+		ptr_tmp = ptr_tmp->next;
+	}
 }
